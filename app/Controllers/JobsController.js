@@ -65,6 +65,44 @@ export default class JobsController {
     }
   }
 
+  edit(id) {
+    document.getElementById(`${id + "-card"}`).classList.add("d-none")
+    document.getElementById(id).classList.remove("d-none")
+  }
+
+  close(id) {
+    document.getElementById(`${id + "-card"}`).classList.remove("d-none")
+    document.getElementById(id).classList.add("d-none")
+  }
+
+  async editJob(id) {
+    try {
+      window.event.preventDefault()
+      const form = window.event.target
+      let modJob = {
+        // @ts-ignore
+        company: form.company.value,
+        // @ts-ignore
+        title: form.title.value,
+        // @ts-ignore
+        hours: form.hours.value,
+        // @ts-ignore
+        rate: form.rate.value,
+        // @ts-ignore
+        description: form.description.value,
+        // @ts-ignore
+        imgUrl: form.imgUrl.value
+      }
+      await jobsService.editJob(id, modJob)
+
+    } catch (error) {
+      console.error(error)
+    }
+    document.getElementById(`${id + "-card"}`).classList.remove("d-none")
+    document.getElementById(id).classList.add("d-none")
+  }
+
+
   apply(id) {
     jobsService.apply(id)
   }

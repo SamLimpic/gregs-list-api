@@ -65,6 +65,44 @@ export default class CarsController {
     }
   }
 
+  edit(id) {
+    document.getElementById(`${id + "-card"}`).classList.add("d-none")
+    document.getElementById(id).classList.remove("d-none")
+  }
+
+  close(id) {
+    document.getElementById(`${id + "-card"}`).classList.remove("d-none")
+    document.getElementById(id).classList.add("d-none")
+  }
+
+  async editCar(id) {
+    try {
+      window.event.preventDefault()
+      const form = window.event.target
+      let modCar = {
+        // @ts-ignore
+        make: form.make.value,
+        // @ts-ignore
+        model: form.model.value,
+        // @ts-ignore
+        year: form.year.value,
+        // @ts-ignore
+        price: Number(form.price.value),
+        // @ts-ignore
+        description: form.description.value,
+        // @ts-ignore
+        imgUrl: form.imgUrl.value
+      }
+      await carsService.editCar(id, modCar)
+
+    } catch (error) {
+      console.error(error)
+    }
+    document.getElementById(`${id + "-card"}`).classList.remove("d-none")
+    document.getElementById(id).classList.add("d-none")
+  }
+
+
   bid(id) {
     carsService.bid(id)
   }

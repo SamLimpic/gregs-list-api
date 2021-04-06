@@ -15,7 +15,7 @@ class AppState extends EventEmitter {
   jobs = []
 }
 
-// NOTE Magic!  No touchy!
+// #region NOTE Magic!  No touchy!
 export const ProxyState = new Proxy(new AppState(), {
   get(target, prop) {
     isValidProp(target, prop)
@@ -28,3 +28,4 @@ export const ProxyState = new Proxy(new AppState(), {
     return true
   }
 })
+//#endregion
