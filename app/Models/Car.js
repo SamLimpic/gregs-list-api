@@ -13,7 +13,7 @@ export default class Car {
         return /*html*/`
     <div class="col-md-4 mb-3">
         <div id="${this.id + '-card'}" class="card shadow">
-            <img class="card-img-top p-4" src="${this.imgUrl}" alt="">
+            <img class="card-img-top p-4 img-card" src="${this.imgUrl}" alt="">
             <div class="card-body">
                 <h4 class="card-title"><u>${this.make} | ${this.model}</u></h4>
                 <h5 class="card-title">${this.year}</h5>

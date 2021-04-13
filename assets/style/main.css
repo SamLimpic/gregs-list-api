@@ -10695,4 +10695,9 @@ main {
   flex-grow: 1;
 }
 
+.img-card {
+  object-fit: cover;
+  height: 15rem;
+}
+
 /*# sourceMappingURL=main.css.map */
